@@ -358,15 +358,15 @@ class Ui_Window(object):
 
             print(self.dataSpesa.text())
 
-            if (self.dataSpesa.text() == "01/01/2000" or self.dataSpesa.text() == "01/01/00"):
+            if (str(self.dataSpesa.text()) == "01/01/2000" or str(self.dataSpesa.text()) == "01/01/00"):
                 if "," in str(self.importo.text()):
                     self.importo.setText(str(self.importo.text()).replace(',', '.'))
                     if(str(self.platform) == "Linux"):
                         cursor.execute('''INSERT INTO Spese(Oggetto,Prezzo,Data) Values (?,?,?)''',
                                (str(self.nome.text()), str(self.importo.text()), str(time.strftime("%x"))))
-                    else:
-                        cursor.execute('''INSERT INTO Spese(Oggetto,Prezzo,Data) Values (?,?,?)''',
-                               (str(self.nome.text()), str(self.importo.text()), str(time.strftime("%d/%m/%Y"))))
+                else:
+                    cursor.execute('''INSERT INTO Spese(Oggetto,Prezzo,Data) Values (?,?,?)''',
+                           (str(self.nome.text()), str(self.importo.text()), str(time.strftime("%d/%m/%Y"))))
             else:
                 if "," in str(self.importo.text()):
                     self.importo.setText(str(self.importo.text()).replace(',', '.'))
