@@ -390,7 +390,7 @@ class Ui_Window(object):
             op = cost[3].split('/')
             if (op[2] == str(time.strftime("%Y"))):
                 total = total + float(cost[2])
-        self.yearGrandTotal.setText(str(total)+" €")
+        self.yearGrandTotal.setText(str(format(total,".2f"))+" €")
 
     def monthGrandTotal(self):
         total = 0
@@ -402,7 +402,7 @@ class Ui_Window(object):
             op = cost[3].split('/')
             if op[1] == str(time.strftime("%m")) and op[2] == str(time.strftime("%Y")):
                 total = total + float(cost[2])
-        self.monthTotal.setText(str(total)+" €")
+        self.monthTotal.setText(str(format(total,".2f"))+" €")
 
     def avgMonth(self):
         total = 0
@@ -412,13 +412,13 @@ class Ui_Window(object):
         cursor.execute("SELECT * FROM Spese")
         dataSet = cursor.fetchall()
         for cost in dataSet:
-            if(cost[3].split("/")[1] == str(time.strftime("%m"))  ):
+            if(str(cost[3].split("/")[1]) == str(time.strftime("%m"))  ):
                 total += float(cost[2])
                 count += 1
             else:
                 count = 1
         try:
-            self.monthAvg.setText(str(total/count)+" €")
+            self.monthAvg.setText(str(format((total/count),".2f"))+" €")
         except:
             self.monthAvg.setText("0 €")
 
@@ -435,7 +435,7 @@ class Ui_Window(object):
                 total += float(cost[2])
                 count += 1
         try:
-            self.yearAvg.setText(str(total/count)+" €")
+            self.yearAvg.setText(str(format(total/count,".2f"))+" €")
         except:
             self.yearAvg.setText("0 €")
 
