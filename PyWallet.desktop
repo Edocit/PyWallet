@@ -1,0 +1,9 @@
+[Desktop Entry]
+Name=PyWallet
+Type=Application
+Icon=/opt/PyWallet/cashIco.ico
+Exec=python3 /opt/PyWallet/inputTest.py
+Terminal=false
+StartupNotify=true
+X-Ubuntu-Gettext-Domain=ubuntu-default-launchers
+Path=/opt/PyWallet/
